@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "rsinfinitybooster",
+  "version": "${version}",
+  "name": "RSInfinityBooster",
+  "description": "Infinite range and cross-dimensional cards for Refined Storage",
+  "authors": ["Hexeption"],
+  "contact": {
+    "sources": "https://github.com/Hexeption/RSInfinityBooster",
+    "issues": "https://github.com/Hexeption/RSInfinityBooster/issues"
+  },
+  "license": "GPL-3.0-only",
+  "environment": "*",
+  "entrypoints": {
+    "main": ["uk.co.hexeption.rsinfinitybooster.RSInfinityBooster"]
+  },
+  "mixins": ["rsinfinitybooster.mixins.json"],
+  "depends": {
+    "fabricloader": ">=0.19.5",
+    "minecraft": "~1.20.1",
+    "java": ">=17",
+    "fabric-api": ">=0.92.12",
+    "refinedstorage": ">=1.12.4-fabric.1"
+  }
+}

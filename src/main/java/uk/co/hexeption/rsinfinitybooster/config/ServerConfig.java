@@ -1,6 +1,6 @@
 package uk.co.hexeption.rsinfinitybooster.config;
 
-import net.minecraftforge.common.ForgeConfigSpec;
+import com.refinedmods.refinedstorage.config.ConfigSpec;
 
 /**
  * ServerConfig
@@ -10,8 +10,8 @@ import net.minecraftforge.common.ForgeConfigSpec;
  */
 public class ServerConfig {
 
-	private ForgeConfigSpec.Builder builder = new ForgeConfigSpec.Builder();
-	private ForgeConfigSpec spec;
+	private final ConfigSpec.Builder builder = new ConfigSpec.Builder();
+	private final ConfigSpec spec;
 	private InfinityCard infinityCard;
 	private DimensionCard dimensionCard;
 
@@ -30,12 +30,12 @@ public class ServerConfig {
 		return dimensionCard;
 	}
 
-	public ForgeConfigSpec getSpec() {
+	public ConfigSpec getSpec() {
 		return spec;
 	}
 
 	public class InfinityCard {
-		private final ForgeConfigSpec.IntValue energyUsage;
+		private final ConfigSpec.IntValue energyUsage;
 
 		public InfinityCard() {
 			builder.push("infinityCard");
@@ -51,7 +51,7 @@ public class ServerConfig {
 	}
 
 	public class DimensionCard {
-		private final ForgeConfigSpec.IntValue energyUsage;
+		private final ConfigSpec.IntValue energyUsage;
 
 		public DimensionCard() {
 			builder.push("dimensionCard");

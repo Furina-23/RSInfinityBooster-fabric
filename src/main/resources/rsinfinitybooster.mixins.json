@@ -2,13 +2,10 @@
   "required": true,
   "package": "uk.co.hexeption.rsinfinitybooster.mixins",
   "compatibilityLevel": "JAVA_17",
-  "refmap": "rsinfinitybooster.refmap.json",
   "mixins": [
     "MixinNetworkItemManager",
     "MixinsWirelessTransmitterNetworkNode",
-    "MixinAdvancedWirelessTransmitterNode",
     "MixinUpgradeItemValidator"
   ],
-  "plugin": "uk.co.hexeption.rsinfinitybooster.mixins.ConditionalMixinPlugin",
   "minVersion": "0.8"
 }

@@ -1,6 +1,5 @@
 package uk.co.hexeption.rsinfinitybooster.item;
 
-import com.refinedmods.refinedstorage.RS;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 
