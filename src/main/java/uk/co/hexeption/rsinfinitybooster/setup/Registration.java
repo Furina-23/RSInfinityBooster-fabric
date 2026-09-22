@@ -1,7 +1,7 @@
 package uk.co.hexeption.rsinfinitybooster.setup;
 
 import com.refinedmods.refinedstorage.registry.DeferredRegister;
-import com.refinedmods.refinedstorage.registry.ForgeRegistries;
+import com.refinedmods.refinedstorage.registry.RSRegistries;
 import uk.co.hexeption.rsinfinitybooster.RSInfinityBooster;
 
 import net.minecraft.world.item.Item;
@@ -14,7 +14,7 @@ import net.minecraft.world.item.Item;
  */
 public class Registration {
 
-	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(ForgeRegistries.ITEMS, RSInfinityBooster.ID);
+	public static final DeferredRegister<Item> ITEMS = DeferredRegister.create(RSRegistries.ITEMS, RSInfinityBooster.ID);
 
 	public static void register() {
 		ModItems.register();
