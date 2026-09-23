@@ -1,6 +1,6 @@
 package uk.co.hexeption.rsinfinitybooster.item;
 
-import net.minecraft.world.item.Item;
+import com.refinedmods.refinedstorage.item.UpgradeItem;
 import net.minecraft.world.item.ItemStack;
 
 /**
@@ -9,9 +9,9 @@ import net.minecraft.world.item.ItemStack;
  * @author Hexeption admin@hexeption.co.uk
  * @since 01/03/2021 - 04:33 pm
  */
-public class DimensionCard extends Item {
+public class DimensionCard extends UpgradeItem {
 	public DimensionCard() {
-		super(new Item.Properties().durability(0));
+		super(Type.RANGE);
 	}
 
 	@Override

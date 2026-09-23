@@ -4,8 +4,7 @@
   "compatibilityLevel": "JAVA_17",
   "mixins": [
     "MixinNetworkItemManager",
-    "MixinsWirelessTransmitterNetworkNode",
-    "MixinUpgradeItemValidator"
+    "MixinsWirelessTransmitterNetworkNode"
   ],
   "minVersion": "0.8"
 }
