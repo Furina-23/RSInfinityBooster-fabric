@@ -1,20 +1,63 @@
-name: Dev-Builds
-on: [push, pull_request]
+name: Build
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
-    container:
-      image: azul/zulu-openjdk-alpine:17-latest
     steps:
-      - uses: actions/checkout@v2.3.4
-      - uses: gradle/wrapper-validation-action@v1.0.3
-      - run: chmod +x ./gradlew
-      - run: ./gradlew clean build curseforge modrinth
-        env:
-          REPO_PASSWORD: ${{ secrets.REPO_PASSWORD }}
-          CURSE_API_KEY: ${{ secrets.CURSE_API_KEY }}
-          MODRINTH_API_KEY: ${{ secrets.MODRINTH_API_KEY }}
-      - uses: actions/upload-artifact@v4
+      - name: Check out booster source
+        uses: actions/checkout@v4
+
+      - name: Check out Refined Storage dependency
+        uses: actions/checkout@v4
         with:
-          name: Builds
+          repository: Furina-23/refinedstorage-fabric
+          ref: main
+          path: refinedstorage
+
+      - name: Check out Refined Storage Addons dependency
+        uses: actions/checkout@v4
+        with:
+          repository: Furina-23/refinedstorageaddons-fabric
+          ref: main
+          path: refinedstorageaddons
+
+      - name: Make Gradle wrappers executable
+        run: |
+          chmod +x ./gradlew
+          chmod +x ./refinedstorage/gradlew
+          chmod +x ./refinedstorageaddons/gradlew
+
+      - name: Set up Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Set up Gradle
+        uses: gradle/actions/setup-gradle@v4
+
+      - name: Build Refined Storage dependencies
+        run: |
+          ./refinedstorage/gradlew --no-daemon build -x test -x integrationTest
+          ./refinedstorageaddons/gradlew --no-daemon build -x test -x integrationTest
+
+      - name: Build and test booster
+        run: ./gradlew --no-daemon clean check build
+
+      - name: Upload build artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: rsinfinitybooster-jars
           path: build/libs/*.jar
+          if-no-files-found: error
