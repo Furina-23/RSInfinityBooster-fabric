@@ -48,9 +48,12 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Build Refined Storage dependencies
-        run: |
-          ./refinedstorage/gradlew --no-daemon build -x test -x integrationTest
-          ./refinedstorageaddons/gradlew --no-daemon build -x test -x integrationTest
+        working-directory: refinedstorage
+        run: ./gradlew --no-daemon build -x test -x integrationTest
+
+      - name: Build Refined Storage Addons dependency
+        working-directory: refinedstorageaddons
+        run: ./gradlew --no-daemon build -x test -x integrationTest
 
       - name: Build and test booster
         run: ./gradlew --no-daemon clean check build
